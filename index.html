@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEEMA DIALYSIS CENTRE HMS</title>
+  
+   <!-- Link to the CSS file -->
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Neema Dialysis Center</h1>
+    <p>WHERE YOUR KIDNEYS GET THE BEST CARE</p>   
+  </header>
+
+  <div id="navigation">
+    <button onclick="showSection('register')">Register</button>
+    <button onclick="showSection('appointments')">Appointments</button>
+    <button onclick="showSection('billing')">Billing</button>
+    <button onclick="showSection('reports')">Reports</button>
+    <button onclick="showSection('feedbacks')">Feedbacks</button>
+    <button onclick="showSection('logout')">Logout</button>
+  </div>
+
+  <main>
+    <section id="register" class="section">
+        <h2>Patient registrationForm</h2>
+        <form id="registrationForm" enctype="multipart/form-data">
+          <label for="username">Username:</label>
+          <input type="text" id="username" placeholder="Enter Username" required>
+    
+          <label for="email">Email:</label>
+          <input type="email" id="email" placeholder="Enter Email" required>
+    
+          <label for="password">Password:</label>
+          <input type="password" id="password" placeholder="Enter Password" required>
+    
+          <!-- Profile Picture Upload Section -->
+          <label for="profilePicture">Profile Picture:</label>
+          <input type="file" id="profilePicture" name="profilePicture" accept="image/*" required>
+    
+          <!-- Image Preview Section -->
+          <div>
+            <img id="imagePreview" src="" alt="Profile Picture Preview" style="display:none; width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
+            <img src="images/image e.jpg" alt="image e" class="section-image" />
+            <img src="images/image g.jpg" alt="image g" class="section-image" />
+        </div>
+        </section>
+
+        <section id="appointments" class="section">
+            <h2>Appointments Section</h2>
+      <div class="form-group">
+        <input type="text" id="appointmentID" placeholder="Patient ID" />
+        <input type="date" id="appointmentDate" />
+        <button onclick="scheduleAppointment()">Schedule</button>
+        <p id="appointmentOutput"></p>
+      </div>
+    </section>
+
+    <section id="billing" class="section">
+        <h2>Billing Section</h2>
+  <p>Select your preferred payment method:</p>
+
+  <form id="billingForm" class="form-group">
+    <label for="patientID">Patient ID:</label>
+    <input type="text" id="patientID" placeholder="Enter Patient ID" required>
+
+    <label for="amount">Amount (KES):</label>
+    <input type="number" id="amount" placeholder="Enter Amount" required>
+
+    <label for="paymentMethod">Payment Method:</label>
+    <select id="paymentMethod" required>
+      <option value="">-- Select Payment Option --</option>
+      <option value="Mpesa">Mpesa - Paybill: 0101010</option>
+      <option value="Equity">Equity Bank - Acc No: 0012345678</option>
+      <option value="Co-op">Co-operative Bank - Acc No: 0022345678</option>
+      <option value="KCB">KCB Bank - Acc No: 0032345678</option>
+      <option value="National">National Bank - Acc No: 0042345678</option>
+      <option value="Absa">Absa Bank - Acc No: 0052345678</option>
+      <label for="accountNumber">Bank Account Number:</label>
+<input type="text" id="accountNumber" value="1234567890" required>
+
+    </select>
+    
+  
+
+    <button type="button" onclick="processBilling()">Process Payment</button>
+    <p id="billingOutput"></p>
+  </form>
+</section>
+
+<section id="reports" class="section">
+    <h2>Reports Section</h2>
+
+  <form id="reportForm" class="form-group">
+    <label for="reportPatientID">Patient ID:</label>
+    <input type="text" id="reportPatientID" placeholder="Enter Patient ID" required>
+
+    <label for="doctorRemarks">Doctor's Remarks:</label>
+    <textarea id="doctorRemarks" rows="4" placeholder="Enter today's health observation and remarks" required></textarea>
+
+    <label for="healthProgress">Health Progress Summary:</label>
+    <textarea id="healthProgress" rows="3" placeholder="e.g., stable, improving, critical, etc." required></textarea>
+
+    <label for="nextAppointment">Next Appointment Date:</label>
+    <input type="date" id="nextAppointment" required>
+
+    <button type="button" onclick="submitDailyReport()">Submit Report</button>
+  </form>
+</section>
+
+<section id="feedbacks" class="section">
+    <h2>Feedbacks Section</h2>
+  <img src="images/image c.jpg" alt="Dialysis center feedback" class="section-image" />
+  <div class="form-group">
+    <input type="text" id="feedbackName" placeholder="Your Name" />
+    <label for="starRating">Rate Our Service:</label>
+    <div id="starRating">
+      <span class="star" data-value="1">&#9734;</span>
+      <span class="star" data-value="2">&#9734;</span>
+      <span class="star" data-value="3">&#9734;</span>
+      <span class="star" data-value="4">&#9734;</span>
+      <span class="star" data-value="5">&#9734;</span>
+    </div>
+    <textarea id="feedbackText" placeholder="Your Feedback" rows="5"></textarea>
+    <button onclick="submitFeedback()">Submit Feedback</button>
+    <p id="feedbackOutput"></p>
+  </div>
+  <div id="feedbackList">
+    <h3>Patient Reviews:</h3>
+    <!-- Submitted feedbacks will appear here -->
+  </div>
+</section>
+</section>
+
+<section id="contact-info" class="section">
+    <h2>contact-info Section</h2>
+  <div class="contact-info">
+    <div class="contact-item">
+      <h3>Customer Care Number</h3>
+      <p>Call us at: <a href="tel:+1234567890">+123-456-7890</a></p>
+    </div>
+
+    <div class="contact-item">
+      <h3>Office Location</h3>
+      <p>Neema Dialysis Center, Main Street, Nairobi, Kenya</p>
+    </div>
+
+    <section id="accountExit" class="section">
+        <h2>Account Exit Options</h2> 
+        <p>You may choose to either log out or permanently delete your account below:</p>
+      
+        <!-- Logout Option -->
+        <div class="exit-option">
+          <h3>Logout</h3>
+          <p>Click below to securely log out from your account.</p>
+          <button onclick="logout()">Logout</button>
+        </div>
+      
+        <hr/>
+      
+        <section id="logout" class="section">
+            <h2>Logout</h2>
+            <p>Click the button below to securely log out from your account.</p>
+            <button onclick="logout()">Logout</button>
+            <p id="logoutMessage"></p>
+          </section>
+          
+  </main>
+
+  <footer class="footer">
+    <div class="contact-info">
+      <h3>Contact Us</h3>
+      <p><strong>Phone:</strong> +254 701933089</p>
+      <p><strong>Address:</strong> 2nd Avenue, Juja -Nairobi, Kenya</p>
+      <p><strong>Opening Hours:</strong> Mon - Sun: 8:00 AM – 6:00 PM</p>
+    </div>
+  </footer>  
+
+    <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
